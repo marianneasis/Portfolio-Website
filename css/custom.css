@@ -6,11 +6,19 @@ Custom CSS styling
 
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,700");
 
+/* Define font-face */
+@font-face {
+  font-family: "Baybayin";
+  src: url("../font/baybayin.ttf") format("truetype"); /* adjust path */
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --black: #0c0c0d;
   --beige: #a27021;
   --white: #ffffff;
-  --light-gray: #9E9E9E;
+  --light-gray: #9e9e9e;
   --header: "Rancho";
 }
 
@@ -59,7 +67,12 @@ p {
   color: #5b5b5b;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
   letter-spacing: -1px;
 }
@@ -81,10 +94,58 @@ h3 {
 }
 
 h3,
-b, strong {
+b,
+strong {
   font-weight: bold;
 }
 
+/* PRELOADER */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* MASK */
+.preloader-wrapper {
+  height: 2.4rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TEXT */
+.preloader-wrapper span {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  transform: translateY(100%);
+  animation: slideUp 3s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.preloader-wrapper span.baybayin {
+  font-family: "Baybayin";
+}
+
+/* SLIDE UP AND OUT */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-120%);
+  }
+}
+
+/* CUSTOM BUTTON */
 .custom-btn {
   background: #eee;
   color: #5b5b5b;
@@ -133,10 +194,10 @@ b, strong {
   left: 0;
   animation: fadeUp 6s linear infinite 0s;
 }
-.animated-item:nth-child(2n+2) {
+.animated-item:nth-child(2n + 2) {
   animation-delay: 2s;
 }
-.animated-item:nth-child(3n+3) {
+.animated-item:nth-child(3n + 3) {
   animation-delay: 4s;
 }
 
@@ -172,7 +233,7 @@ b, strong {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 999999;
+  z-index: 999;
   background-color: white;
   will-change: transform;
   transition: transform 200ms linear;
@@ -184,7 +245,7 @@ body.dark-mode .navbar {
   box-shadow: none;
 }
 body.dark-mode .navbar-collapse {
-    background-color: var(--black);
+  background-color: var(--black);
 }
 .navbar[class*="-unpinned"] {
   transform: translate(0, -150%);
@@ -292,15 +353,15 @@ body.dark-mode .navbar-collapse {
   right: 6px;
 }
 .color-mode-icon:after {
-  font-family: 'unicons';
-  content: '\ea9f';
+  font-family: "unicons";
+  content: "\ea9f";
   font-size: 30px;
   font-weight: 300;
   font-style: normal;
 }
 .color-mode-icon.active:after {
-  font-family: 'unicons';
-  content: '\eb65';
+  font-family: "unicons";
+  content: "\eb65";
   font-size: 30px;
   color: var(--black);
 }
@@ -324,8 +385,14 @@ body.dark-mode .navbar-collapse {
 }
 .dark-mode .feature-card .uil,
 .dark-mode .navbar-light .navbar-brand,
-.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6,
-.dark-mode .color-mode, .dark-mode p {
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode .color-mode,
+.dark-mode p {
   color: #ffffff;
 }
 .dark-mode .owl-carousel .owl-nav button.owl-next,
@@ -399,27 +466,27 @@ body.dark-mode .navbar-collapse {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  font-family: 'unicons';
+  font-family: "unicons";
   font-size: 100px;
   line-height: normal;
 }
 .owl-carousel .owl-nav .owl-prev:before {
-  content: '\e833';
+  content: "\e833";
   left: -100px;
 }
 .owl-carousel .owl-nav .owl-next:before {
-  content: '\e836';
+  content: "\e836";
   right: -100px;
 }
 
-.owl-theme .owl-nav [class*=owl-] {
+.owl-theme .owl-nav [class*="owl-"] {
   background: none;
   border-radius: 0;
   margin: 0;
   padding: 0;
   font-size: inherit;
 }
-.owl-theme .owl-nav [class*=owl-]:hover {
+.owl-theme .owl-nav [class*="owl-"]:hover {
   color: var(--beige);
 }
 .owl-theme .owl-dots .owl-dot {
@@ -463,7 +530,8 @@ body.dark-mode .navbar-collapse {
 .contact-form .form-control:not(textarea) {
   height: 48px;
 }
-.contact-form .form-control:hover, .contact-form .form-control:focus {
+.contact-form .form-control:hover,
+.contact-form .form-control:focus {
   border-color: var(--beige);
 }
 .contact-form .submit-btn {
@@ -484,7 +552,8 @@ body.dark-mode .navbar-collapse {
   position: relative;
   bottom: 8px;
 }
-.contact-info p, .contact-info a {
+.contact-info p,
+.contact-info a {
   color: #f7f3f3;
 }
 .social-links .uil {
@@ -548,10 +617,10 @@ body.dark-mode .navbar-collapse {
   }
 }
 @media (max-width: 580px) {
-	.animated-info {
-		width: 100%;
-		min-width: unset;
-	}
+  .animated-info {
+    width: 100%;
+    min-width: unset;
+  }
   .animated-item {
     font-size: 48px;
   }
